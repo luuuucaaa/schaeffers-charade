@@ -338,6 +338,9 @@ function backFromGameButtonPressed()
 
 function yesSubmitButtonPressed()
 {
+    for (let i = 0; i < timeout.length; i++) {
+        clearTimeout(timeout[i]);
+    }
     SUBMITTING = false;
     TASK = false;
     let randomTasks = getRandomTasks();
