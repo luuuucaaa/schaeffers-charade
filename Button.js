@@ -341,6 +341,9 @@ function yesSubmitButtonPressed()
     for (let i = 0; i < timeout.length; i++) {
         clearTimeout(timeout[i]);
     }
+    for (let i = 0; i < soundObjectSet.soundObjects.length; i++) {
+        soundObjectSet.soundObjects[i].stopAudio();
+    }
     SUBMITTING = false;
     TASK = false;
     let randomTasks = getRandomTasks();
