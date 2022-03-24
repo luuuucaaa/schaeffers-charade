@@ -159,14 +159,8 @@ class SoundObject
     {
         if (!MOUSE_OVER && !MOUSE_DRAG && this.isInside(mouseX, mouseY)) {
             this.hovering = true;
-            /* if (GAME_TYPE === 'Audio' && (GAME_MODE === 'menu' || GAME_MODE === 'game' || GAME_MODE === 'taskSelection' || GAME_MODE === 'gameOver')) {
-                this.startAudio();
-            } */
         } else if (this.hovering && !(this.isInside(mouseX, mouseY))) {
             this.hovering = false;
-            /* if (GAME_TYPE === 'Audio' && (GAME_MODE === 'menu' || GAME_MODE === 'game' || GAME_MODE === 'taskSelection' || GAME_MODE === 'gameOver')) {
-                this.stopAudio();
-            } */
         }
     }
     pressed()
@@ -227,6 +221,33 @@ class SoundObject
         } else {
             return false;
         }
+    }
+    duplicate()
+    {
+        if (this.hovering) {
+            let that = this;
+            cvs.doubleClicked(function() {
+                let soundObjectDuplicate = new SoundObject(
+                    that.pos.x,
+                    that.pos.y,
+                    that.w,
+                    SOUNDOBJECT_ID,
+                    that.filePath
+                );
+                SOUNDOBJECT_ID++;
+                soundObjectDuplicate.resetPosition();
+                soundObjectDuplicate.color = that.color;
+                soundObjectDuplicate.colorBuffer = that.color;
+                soundObjectDuplicate.pos.set(that.pos.x + 20, that.pos.y - 20);
+                soundObjectDuplicate.resetProperties();
+                if (GAME_TYPE === 'Audio' && AUDIO_MODE == 'multichannel') {
+                    soundObjectDuplicate.createAudioNodes(true);
+                } else if (GAME_TYPE === 'Audio' && AUDIO_MODE == 'binaural') {
+                    soundObjectDuplicate.createAudioNodes(false);
+                }
+                soundObjectSet.soundObjects.push(soundObjectDuplicate);
+            });
+        } 
     }
     show()
     {

@@ -8,6 +8,7 @@ class SoundObjectSet
         this.pos = createVector(xRel * width, yRel * height);
         this.nRows = nRows;
         this.nCols = nCols;
+        this.nUniqueSoundObjects = this.nRows * this.nCols;
         this.wRel = wRel;
         this.w = this.wRel * height * 1.2;
 
@@ -15,7 +16,6 @@ class SoundObjectSet
     }
     create()
     {
-        let id = 0;
         this.soundObjects = [];
         for (let r = 0; r < this.nRows; r++) {
             for (let c = 0; c < this.nCols; c++) {
@@ -23,9 +23,9 @@ class SoundObjectSet
                 let yRel = 0.05 * height;
                 let x = -(xRel + xRel/4)/2 - this.nCols/2 * xRel + c * (xRel + xRel/4) - xRel/4;
                 let y = -(yRel + yRel/4)/2 - this.nRows/2 * yRel + r * (yRel + yRel/4) + 3.18 * height/8;
-                let soundObject = new SoundObject(x, y, this.w, id, filePathsSoundset[id]);
+                let soundObject = new SoundObject(x, y, this.w, SOUNDOBJECT_ID, filePathsSoundset[SOUNDOBJECT_ID]);
                 this.soundObjects.push(soundObject);
-                id++;
+                SOUNDOBJECT_ID++;
             }
         }
     }
@@ -60,7 +60,20 @@ class SoundObjectSet
     resetProperties()
     {
         for (let i = 0; i < this.soundObjects.length; i++) {
-            this.soundObjects[i].resetProperties();
+                this.soundObjects[i].resetProperties();
+        }
+    }
+    deleteDuplicates()
+    {
+        let duplicateIndices = [];
+        for (let i = 0; i < this.soundObjects.length; i++) {
+            if (this.soundObjects[i].id > this.nUniqueSoundObjects - 1) {
+                duplicateIndices.push(i);
+            }
+        }
+        console.log(duplicateIndices);
+        for (let j = 0; j < duplicateIndices.length; j++) {
+            this.soundObjects.splice(duplicateIndices[j], 1);
         }
     }
     pressed()
@@ -131,6 +144,7 @@ class SoundObjectSet
                     this.soundObjects[i].drag();
                     this.soundObjects[i].snap(this.sceneSequence.scenes);
                     this.soundObjects[i].edges();
+                    this.soundObjects[i].duplicate();
                     this.soundObjects[i].show();
                 }
                 break;

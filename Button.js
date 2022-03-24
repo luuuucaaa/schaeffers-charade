@@ -302,6 +302,7 @@ function backFromTaskSelectionButtonPressed()
 
 function resetButtonPressed()
 {
+    soundObjectSet.deleteDuplicates();
     soundObjectSet.resetProperties();
     soundObjectSet.resetPosition('init');
     soundObjectSet.rescale();

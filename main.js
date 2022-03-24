@@ -12,8 +12,9 @@ let MOUSE_OVER = false;
 let MOUSE_DRAG = false;
 let PLAYBACK = false;
 
-let font, hpiLogo;
+let cvs, font, hpiLogo;
 
+let SOUNDOBJECT_ID = 0;
 let soundObjectSet, sceneSequence;
 
 function preload()
@@ -24,7 +25,7 @@ function preload()
 
 function setup()
 {
-    createCanvas(Math.max(windowWidth, 1280), Math.max(windowHeight, 720));
+    cvs = createCanvas(Math.max(windowWidth, 1280), Math.max(windowHeight, 720));
     createBackgroundAnimation();
     createErrorMessages();
     createButtons();
@@ -34,6 +35,7 @@ function setup()
 
 function draw()
 {
+    console.log(SOUNDOBJECT_ID);
     backgroundAnimation();
     displayFramerate();
     switch (GAME_MODE) {

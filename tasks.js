@@ -5,7 +5,16 @@ const TASKS = [
     'duck hunting',
     'football game',
     'university lecture',
-    'earthquake'
+    'earthquake',
+    'traffic jam',
+    'funeral',
+    'rollercoaster ride',
+    'moon landing',
+    'yoga session',
+    'auction',
+    'talk show',
+    'radio show',
+    'demolition of building'
 ]
 
 function getRandomTasks()
