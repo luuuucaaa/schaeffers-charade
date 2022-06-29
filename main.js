@@ -29,6 +29,7 @@ function setup()
     createBackgroundAnimation();
     createErrorMessages();
     createButtons();
+    createInfoBoxes();
     sceneSequence = createSceneSequence();
     soundObjectSet = createSoundObjectSet(sceneSequence);
 }
@@ -45,20 +46,20 @@ function draw()
             audioSettingsMode();
             break;
         case 'menu':
-            menuMode();
             displayGameInfos();
+            menuMode();
             break;
         case 'taskSelection':
-            taskSelectionMode();
             displayGameInfos();
+            taskSelectionMode();
             break;
         case 'game':
-            gameMode();
             displayGameInfos();
+            gameMode();
             break;
         case 'playback':
-            playbackMode(3000);
             displayGameInfos();
+            playbackMode(3000);
             break;
         case 'gameOver':
             gameOverMode();

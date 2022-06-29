@@ -16,11 +16,12 @@ class Button
         this.textSize = textSize;
         this.rollover = false;
         this.onPress = onPress;
+        this.isLocked = false;
         this.update();
     }
     over()
     {
-        if (mouseX > this.x && mouseX < this.x + this.w && mouseY > this.y && mouseY < this.y + this.h) {
+        if (mouseX > this.x && mouseX < this.x + this.w && mouseY > this.y && mouseY < this.y + this.h && !this.isLocked) {
             this.rollover = true;
         } else {
             this.rollover = false;
@@ -28,7 +29,7 @@ class Button
     }
     pressed()
     {
-        if (mouseX > this.x && mouseX < this.x + this.w && mouseY > this.y && mouseY < this.y + this.h) {
+        if (this.rollover) {
             this.alpha = 0;
             this.onPress(this.text);
         }
@@ -61,6 +62,14 @@ class Button
                 this.x += width/2 - this.w/2;
                 this.y += height/2 - this.h/2;
                 break;
+        }
+    }
+    lock()
+    {
+        if (this.isLocked) {
+            this.isLocked = false;
+        } else {
+            this.isLocked = true;
         }
     }
     show()
@@ -175,6 +184,36 @@ function updateButtons()
     playAgainButton.update();
 }
 
+function lockButtons()
+{
+    audioGameButton.lock();
+    visualGameButton.lock();
+    
+    binauralButton.lock();
+    multichannelButton.lock();
+    backFromAudioSettingsButton.lock();
+
+    startButton.lock();
+    changeTaskButton.lock();
+    backFromMenuButton.lock();
+
+    task1Button.lock();
+    task2Button.lock();
+    task3Button.lock();
+    backFromTaskSelectionButton.lock();
+
+    playbackButton.lock();
+    stopButton.lock();
+    resetButton.lock();
+    submitButton.lock();
+    backFromGameButton.lock();
+
+    yesSubmitButton.lock();
+    noSubmitButton.lock();
+
+    playAgainButton.lock();
+}
+
 function fullscreenButtonPressed()
 {
     let fs = fullscreen();
@@ -183,7 +222,31 @@ function fullscreenButtonPressed()
 
 function infoButtonPressed()
 {
-
+    switch (GAME_MODE) {
+        case 'gameTypeSelection':
+            gameTypeSelectionModeInfoBox.toggle();
+            break;
+        case 'audioSettings':
+            audioSettingsModeInfoBox.toggle();
+            break;
+        case 'menu':
+            menuModeInfoBox.toggle();
+            break;
+        case 'taskSelection':
+            taskSelectionModeInfoBox.toggle();
+            break;
+        case 'game':
+            audioGameModeInfoBox.toggle();
+            visualGameModeInfoBox.toggle();
+            break;
+        case 'playback':
+            gameModeInfoBox.toggle();
+            break;
+        case 'gameOver':
+            gameOverModeInfoBox.toggle();
+            break;
+    }
+    lockButtons();
 }
 
 function audioGameButtonPressed()
@@ -361,6 +424,7 @@ function yesSubmitButtonPressed()
     if (GAME_TYPE === 'Audio') {
         startThemeSong();
     }
+    soundObjectSet.deleteDuplicates();
 }
 
 function noSubmitButtonPressed()

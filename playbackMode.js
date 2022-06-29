@@ -19,6 +19,7 @@ function playbackMode(time)
         }, sceneSequence.scenes.length * time));
         PLAYBACK = false;
     }
+    gameModeInfoBox.show();
 }
 
 function handlePlaybackModeButtons()

@@ -2,7 +2,8 @@ function gameTypeSelectionMode()
 {
     // console.log('gameTypeSelectionMode');
     soundObjectSet.run();
-    handleGameTypeSelectionModeButtons()
+    handleGameTypeSelectionModeButtons();
+    gameTypeSelectionModeInfoBox.show();
 }
 
 function handleGameTypeSelectionModeButtons()

@@ -3,6 +3,7 @@ function menuMode()
     // console.log('menuMode');
     soundObjectSet.run();
     handleMenuModeButtons();
+    menuModeInfoBox.show();
 }
 
 function handleMenuModeButtons()

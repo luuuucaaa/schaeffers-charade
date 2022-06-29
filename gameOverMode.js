@@ -4,6 +4,7 @@ function gameOverMode()
     soundObjectSet.run();
     gameOverOverlay();
     handleGameOverModeButtons();
+    gameOverModeInfoBox.show();
 }
 
 function handleGameOverModeButtons()

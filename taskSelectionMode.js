@@ -4,6 +4,7 @@ function taskSelectionMode()
     soundObjectSet.run();
     handleTaskSelectionModeButtons();
     taskSelectionOverlay();
+    taskSelectionModeInfoBox.show();
 }
 
 function handleTaskSelectionModeButtons()

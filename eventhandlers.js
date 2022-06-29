@@ -5,6 +5,7 @@ function windowResized()
     RESCALING = true;
     resizeCanvas(constrain(windowWidth, 1280, displayWidth), constrain(windowHeight, 720, displayHeight));
     updateButtons();
+    updateInfoBoxes();
     multichannelError.update();
     sceneSequence.rescale();
     soundObjectSet.rescale();

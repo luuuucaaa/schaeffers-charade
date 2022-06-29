@@ -9,6 +9,11 @@ function gameMode()
     if (SUBMITTING) {
         submittingOverlay();
     }
+    if (GAME_TYPE == 'Audio') {
+        audioGameModeInfoBox.show();
+    } else {
+        visualGameModeInfoBox.show();
+    }
 }
 
 function handleGameModeButtons()

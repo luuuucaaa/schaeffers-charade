@@ -3,6 +3,7 @@ function audioSettingsMode()
     // console.log('audioSettingsMode');
     soundObjectSet.run();
     handleAudioSettingsButtons();
+    audioSettingsModeInfoBox.show();
 }
 
 function handleAudioSettingsButtons()
