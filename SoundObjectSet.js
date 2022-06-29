@@ -65,16 +65,13 @@ class SoundObjectSet
     }
     deleteDuplicates()
     {
-        let duplicateIndices = [];
+        this.temp = [];
         for (let i = 0; i < this.soundObjects.length; i++) {
-            if (this.soundObjects[i].id > this.nUniqueSoundObjects - 1) {
-                duplicateIndices.push(i);
+            if (this.soundObjects[i].id < this.nUniqueSoundObjects) {
+                this.temp.push(this.soundObjects[i]);
             }
         }
-        console.log(duplicateIndices);
-        for (let j = 0; j < duplicateIndices.length; j++) {
-            this.soundObjects.splice(duplicateIndices[j], 1);
-        }
+        this.soundObjects = this.temp;
     }
     pressed()
     {

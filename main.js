@@ -35,7 +35,6 @@ function setup()
 
 function draw()
 {
-    console.log(SOUNDOBJECT_ID);
     backgroundAnimation();
     displayFramerate();
     switch (GAME_MODE) {

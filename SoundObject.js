@@ -159,6 +159,7 @@ class SoundObject
     {
         if (!MOUSE_OVER && !MOUSE_DRAG && this.isInside(mouseX, mouseY)) {
             this.hovering = true;
+            console.log("id: " + this.id);
         } else if (this.hovering && !(this.isInside(mouseX, mouseY))) {
             this.hovering = false;
         }
@@ -224,9 +225,9 @@ class SoundObject
     }
     duplicate()
     {
-        if (this.hovering) {
-            let that = this;
-            cvs.doubleClicked(function() {
+        let that = this;
+        cvs.doubleClicked(function() {
+            if (that.hovering) {
                 let soundObjectDuplicate = new SoundObject(
                     that.pos.x,
                     that.pos.y,
@@ -246,8 +247,8 @@ class SoundObject
                     soundObjectDuplicate.createAudioNodes(false);
                 }
                 soundObjectSet.soundObjects.push(soundObjectDuplicate);
-            });
-        } 
+            }
+        });
     }
     show()
     {
