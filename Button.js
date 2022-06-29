@@ -334,6 +334,7 @@ function backFromMenuButtonPressed()
             break;
         case 'Visual':
             GAME_MODE = 'gameTypeSelection';
+            GAME_TYPE = '';
             break;
     }
     stopThemeSong();

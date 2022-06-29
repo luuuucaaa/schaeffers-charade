@@ -12,7 +12,7 @@ let MOUSE_OVER = false;
 let MOUSE_DRAG = false;
 let PLAYBACK = false;
 
-let cvs, font, hpiLogo;
+let cvs, font, hpiLogo, icon;
 
 let SOUNDOBJECT_ID = 0;
 let soundObjectSet, sceneSequence;
@@ -21,6 +21,7 @@ function preload()
 {
     font = loadFont('./assets/retro.ttf');
     hpiLogo = loadImage('./assets/hpilogo.png');
+    icon = loadImage('./assets/visualset/test.png');
 }
 
 function setup()

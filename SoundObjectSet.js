@@ -23,7 +23,7 @@ class SoundObjectSet
                 let yRel = 0.05 * height;
                 let x = -(xRel + xRel/4)/2 - this.nCols/2 * xRel + c * (xRel + xRel/4) - xRel/4;
                 let y = -(yRel + yRel/4)/2 - this.nRows/2 * yRel + r * (yRel + yRel/4) + 3.18 * height/8;
-                let soundObject = new SoundObject(x, y, this.w, SOUNDOBJECT_ID, filePathsSoundset[SOUNDOBJECT_ID]);
+                let soundObject = new SoundObject(x, y, this.w, SOUNDOBJECT_ID, filePathsSoundset[SOUNDOBJECT_ID], icon);
                 this.soundObjects.push(soundObject);
                 SOUNDOBJECT_ID++;
             }
@@ -123,7 +123,7 @@ class SoundObjectSet
             case 'taskSelection':
             case 'gameOver':
                 for (let i = 0; i < this.soundObjects.length; i++) {
-                    if (GAME_TYPE === 'Audio' && !(GAME_MODE === 'audioSettings')) {
+                    if (GAME_TYPE === 'Audio' && !(GAME_MODE === 'audioSettings') && !(GAME_MODE === 'gameTypeSelection')) {
                         this.soundObjects[i].handleAudio();
                     }
                     this.soundObjects[i].over();
@@ -134,7 +134,7 @@ class SoundObjectSet
                 break;
             case 'game':
                 for (let i = 0; i < this.soundObjects.length; i++) {
-                    if (GAME_TYPE === 'Audio' && !(GAME_MODE === 'audioSettings')) {
+                    if (GAME_TYPE === 'Audio' && !(GAME_MODE === 'audioSettings') && !(GAME_MODE === 'gameTypeSelection')) {
                         this.soundObjects[i].handleAudio();
                     }
                     this.soundObjects[i].over();

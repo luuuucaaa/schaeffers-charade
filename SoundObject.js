@@ -1,9 +1,10 @@
 class SoundObject
 {
-    constructor(x, y, w, id, filePath)
+    constructor(x, y, w, id, filePath, icon)
     {
         this.id = id;
         this.filePath = filePath;
+        this.icon = icon;
 
         this.origin = createVector(CONFIG['posRelHud'][0] * width, CONFIG['posRelHud'][1] * height);
 
@@ -66,12 +67,17 @@ class SoundObject
         this.pannerNode.setPosition(this.pos.x, this.pos.y, 0);
     }
     startAudio() {
-        if (!this.playing) {
+        if (!this.playing && !(GAME_MODE == 'gameTypeSelection' || GAME_MODE == 'audioSettings')) {
             if (AUDIO_MODE === 'binaural') {
                 this.source = getAudioDataBinaural(this.filePath, this.pannerNode, this.gainNode);
             } else if (AUDIO_MODE === 'multichannel') {
                 this.source = getAudioDataMultichannel(this.filePath, this.gainNodes, this.multichannelMerger);
             }
+            /* let randomDelay = Math.floor(100 + Math.random() * 400);
+            let that = this;
+            setTimeout(function() {
+                that.source.start();
+            }, randomDelay); */
             this.source.start();
             this.playing = true;
         }
@@ -104,7 +110,7 @@ class SoundObject
             this.angle += this.automations.y;
             this.angle %= 4 * PI;
             this.strokeWeight = map(this.w, 30, 100, 1.5, 3);
-            if (GAME_TYPE === 'Audio' && !(GAME_MODE === 'audioSettings')) {
+            if (GAME_TYPE === 'Audio' && !(GAME_MODE === 'audioSettings' || GAME_MODE === 'gameTypeSelection')) {
                 this.updateBinauralPanner();
             }
         }
@@ -159,7 +165,6 @@ class SoundObject
     {
         if (!MOUSE_OVER && !MOUSE_DRAG && this.isInside(mouseX, mouseY)) {
             this.hovering = true;
-            console.log("id: " + this.id);
         } else if (this.hovering && !(this.isInside(mouseX, mouseY))) {
             this.hovering = false;
         }
@@ -233,7 +238,8 @@ class SoundObject
                     that.pos.y,
                     that.w,
                     SOUNDOBJECT_ID,
-                    that.filePath
+                    that.filePath,
+                    that.icon
                 );
                 SOUNDOBJECT_ID++;
                 soundObjectDuplicate.resetPosition();
@@ -273,6 +279,10 @@ class SoundObject
 
         this.color.setAlpha(this.alpha);
         fill(this.color);
+
+        if (GAME_TYPE == 'Visual') {
+            image(this.icon, -this.w/2 + 2, -this.w/2 + 2, this.w - 4, this.w - 4);
+        }
 
         rect(-this.w/2, -this.w/2, this.w, this.w, 5);
         pop();
