@@ -19,7 +19,11 @@ function playbackMode(time)
         }, sceneSequence.scenes.length * time));
         PLAYBACK = false;
     }
-    gameModeInfoBox.show();
+    if (GAME_TYPE == 'Audio') {
+        audioGameModeInfoBox.show();
+    } else {
+        visualGameModeInfoBox.show();
+    }
 }
 
 function handlePlaybackModeButtons()

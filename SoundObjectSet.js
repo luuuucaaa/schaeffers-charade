@@ -39,15 +39,11 @@ class SoundObjectSet
         } else {
             this.pos.set(this.posRel.x * width, this.posRel.y * height);
             this.w = this.wRel * height * 1.2;
-            let idx = 0;
-            for (let r = 0; r < this.nRows; r++) {
-                for (let c = 0; c < this.nCols; c++) {
-                    this.soundObjects[idx].origin.set(this.origin);
-                    this.soundObjects[idx].posGame.set(this.soundObjects[idx].posRelGame.x * height, this.soundObjects[idx].posRelGame.y * height);
-                    this.soundObjects[idx].pos.set(this.soundObjects[idx].origin.x + this.soundObjects[idx].posGame.x, this.soundObjects[idx].origin.y + this.soundObjects[idx].posGame.y);
-                    this.soundObjects[idx].w = this.w;
-                    idx++;
-                }
+            for (let i = 0; i < this.soundObjects.length; i++) {
+                this.soundObjects[i].origin.set(this.origin);
+                this.soundObjects[i].posGame.set(this.soundObjects[i].posRelGame.x * height, this.soundObjects[i].posRelGame.y * height);
+                this.soundObjects[i].pos.set(this.soundObjects[i].origin.x + this.soundObjects[i].posGame.x, this.soundObjects[i].origin.y + this.soundObjects[i].posGame.y);
+                this.soundObjects[i].w = this.w;
             }
         }
     }
