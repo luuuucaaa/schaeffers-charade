@@ -24,3 +24,30 @@ const filePathsSoundset = [
     "assets/soundset/N_04_HumanSpeech.wav",
     "assets/soundset/N_04_Laughter.wav"
 ]
+
+const filePathsVisualset = [
+    "assets/visualset/1-stones.png",
+    "assets/visualset/2-rain.png",
+    "assets/visualset/3-fire.png",
+    "assets/visualset/4-placeholder.png",
+    "assets/visualset/5-rain.png",
+    "assets/visualset/6-rain.png",
+    "assets/visualset/7-water.png",
+    "assets/visualset/8-wind.png",
+    "assets/visualset/9-bird.png",
+    "assets/visualset/10-cat.png",
+    "assets/visualset/11-cicada.png",
+    "assets/visualset/12-steps.png",
+    "assets/visualset/13-computer-sound.png",
+    "assets/visualset/14-placeholder.png",
+    "assets/visualset/15-speech.png",
+    "assets/visualset/16-steps.png",
+    "assets/visualset/17-placeholder.png",
+    "assets/visualset/18-placeholder.png",
+    "assets/visualset/19-placeholder.png",
+    "assets/visualset/20-placeholder.png",
+    "assets/visualset/21-clap.png",
+    "assets/visualset/22-cry.png",
+    "assets/visualset/23-hello.png",
+    "assets/visualset/24-laugh.png"
+]
