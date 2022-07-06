@@ -281,7 +281,7 @@ class SoundObject
         fill(this.color);
 
         if (GAME_TYPE == 'Visual') {
-            image(this.icon, -this.w/2 + 2, -this.w/2 + 2, this.w - 4, this.w - 4);
+            image(this.icon, -this.w/2, -this.w/2, this.w, this.w);
         }
 
         rect(-this.w/2, -this.w/2, this.w, this.w, 5);
