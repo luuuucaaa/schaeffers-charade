@@ -28,7 +28,7 @@ function handleGameModeButtons()
     }
     resetButton.over();
     resetButton.show();
-    if (!SUBMITTING) {
+    /* if (!SUBMITTING) {
         submitButton.over();
         submitButton.show();
     } else {
@@ -36,7 +36,7 @@ function handleGameModeButtons()
         yesSubmitButton.show();
         noSubmitButton.over();
         noSubmitButton.show();
-    }
+    } */
     backFromGameButton.over();
     backFromGameButton.show();
 }

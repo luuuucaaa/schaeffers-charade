@@ -308,9 +308,7 @@ function startButtonPressed()
         soundObjectSet.resetPosition('game');
         soundObjectSet.rescale();
         sceneSequence.resetSoundObjectStacks();
-        if (GAME_TYPE === 'Audio') {
-            stopThemeSong();
-        }
+        stopThemeSong();
     } else {
         GAME_MODE = 'taskSelection';
     }
@@ -354,9 +352,7 @@ function taskButtonPressed(t)
     soundObjectSet.resetPosition('init');
     soundObjectSet.rescale();
     sceneSequence.resetSoundObjectStacks();
-    if (GAME_TYPE === 'Audio') {
-        stopThemeSong();
-    }
+    stopThemeSong();
 }
 
 function backFromTaskSelectionButtonPressed()
@@ -396,9 +392,7 @@ function backFromGameButtonPressed()
 {
     SUBMITTING = false;
     GAME_MODE = 'menu';
-    if (GAME_TYPE === 'Audio') {
-        startThemeSong();
-    }
+    startThemeSong();
 }
 
 function yesSubmitButtonPressed()
@@ -422,9 +416,7 @@ function yesSubmitButtonPressed()
     } else {
         GAME_MODE = 'taskSelection';
     }
-    if (GAME_TYPE === 'Audio') {
-        startThemeSong();
-    }
+    startThemeSong();
     soundObjectSet.deleteDuplicates();
 }
 
