@@ -65,6 +65,19 @@ class SoundObject
     updateBinauralPanner()
     {
         this.pannerNode.setPosition(this.pos.x, this.pos.y, 0);
+
+        // needs refactoring
+        let maxDist = Math.sqrt(((sceneSequence.scenes[0].nX * sceneSequence.scenes[0].gridWidth)/2)**2 +
+            ((sceneSequence.scenes[0].nY * sceneSequence.scenes[0].gridWidth)/2)**2) - this.w/2;
+        let dist = Math.hypot(listenerPosition[0] - this.pos.x, listenerPosition[1] - this.pos.y);
+        let g;
+        if (dist > maxDist + this.w/2) {
+            g = 1;
+        } else {
+            g = Math.exp(1 - dist/maxDist) - 1;
+        }
+        this.gainNode.gain.value = g;
+        // -----------------
     }
     startAudio() {
         if (!this.playing && !(GAME_MODE == 'gameTypeSelection' || GAME_MODE == 'audioSettings')) {
