@@ -17,6 +17,14 @@ function mousePressed()
     fullscreenButton.pressed();
     infoButton.pressed();
     switch (GAME_MODE) {
+        case 'start':
+            startHearingTestButton.pressed();
+            break;
+        case 'hearingTest':
+            leftButton.pressed();
+            middleButton.pressed();
+            rightButton.pressed();
+            break;
         case 'gameTypeSelection':
             audioGameButton.pressed();
             visualGameButton.pressed();

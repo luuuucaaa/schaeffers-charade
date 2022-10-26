@@ -99,6 +99,7 @@ class Button
 }
 
 let fullscreenButton, infoButton;
+let leftButton, middleButton, rightButton;
 let audioGameButton, visualGameButton;
 let binauralButton, multichannelButton, backFromAudioSettingsButton;
 let startButton, changeTaskButton, backFromMenuButton;
@@ -112,6 +113,11 @@ function createButtons()
     // visible in any mode
     fullscreenButton = new Button(20, 20, 160, 40, 'upper_left', color(255), 2, 'Fullscreen', 18, fullscreenButtonPressed);
     infoButton = new Button(20, -20, 40, 40, 'lower_left', color(255), 2, 'i', 18, infoButtonPressed);
+
+    // visible in hearingTest mode
+    leftButton = new Button(-200, 80, 160, 40, 'center', color(255), 2, 'Left', 18, leftButtonPressed);
+    middleButton = new Button(0, 80, 160, 40, 'center', color(255), 2, 'Middle', 18, middleButtonPressed);
+    rightButton = new Button(200, 80, 160, 40, 'center', color(255), 2, 'Right', 18, rightButtonPressed);
 
     // visible in gameTypeSelection mode
     audioGameButton = new Button(0, -60, 600, 80, 'center', color(180, 90, 110), 3, 'Audio Game', 22, audioGameButtonPressed);
@@ -155,6 +161,10 @@ function updateButtons()
 {
     fullscreenButton.update();
     infoButton.update();
+
+    leftButton.update();
+    middleButton.update();
+    rightButton.update();
 
     audioGameButton.update();
     visualGameButton.update();
@@ -249,10 +259,53 @@ function infoButtonPressed()
     lockButtons();
 }
 
+function leftButtonPressed()
+{
+    hearingTestButtonPressed('left');
+}
+
+function middleButtonPressed()
+{
+    hearingTestButtonPressed('middle');
+}
+
+function rightButtonPressed()
+{
+    hearingTestButtonPressed('right');
+}
+
+function hearingTestButtonPressed(type)
+{
+    hearingTestCorrect.resetAlpha();
+    hearingTestFalse.resetAlpha();
+    if (HTEST_TASK == type) {
+        if (N_HTEST_ROUND > N_HTEST_MAX_ROUNDS) {
+            stopTestSound();
+            startThemeSong();
+            GAME_MODE = 'menu';
+            return;
+        }
+        hearingTestCorrect.flash();
+        N_HTEST_ROUND += 1;
+        stopTestSound();
+        HTEST_TASK = getNewHearingTestTask();
+        startTestSound(HTEST_TASK);
+    } else {
+        hearingTestFalse.flash();
+        N_HTEST_ROUND = 1;
+        stopTestSound();
+        HTEST_TASK = getNewHearingTestTask();
+        startTestSound(HTEST_TASK);
+    }
+}
+
 function audioGameButtonPressed()
 {
     GAME_TYPE = 'Audio';
     GAME_MODE = 'audioSettings';
+
+    // only for the survey
+    binauralButtonPressed();
 }
 
 function visualGameButtonPressed()
@@ -262,6 +315,7 @@ function visualGameButtonPressed()
     AUDIO_MODE = false;
     GAME_MODE = 'menu';
     soundObjectSet.flash();
+    startThemeSong();
 }
 
 function binauralButtonPressed()
@@ -271,6 +325,10 @@ function binauralButtonPressed()
     GAME_MODE = 'menu';
     AUDIO_MODE = 'binaural';
     soundObjectSet.flash();
+
+    GAME_MODE = 'hearingTest';
+    HTEST_TASK = getNewHearingTestTask();
+    startTestSound(HTEST_TASK);
 }
 
 function multichannelButtonPressed()

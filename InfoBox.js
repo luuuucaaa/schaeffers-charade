@@ -80,7 +80,7 @@ let gameOverModeInfoBox;
 
 function createInfoBoxes()
 {
-    gameTypeSelectionModeInfoBox = new InfoBox(0, 0, 1000, 800, 'center', color(255), 2, infoTexts['gameTypeSelection'], 18);
+    gameTypeSelectionModeInfoBox = new InfoBox(0, 0, 1250, 700, 'center', color(255), 2, infoTexts['gameTypeSelection'], 18);
     audioSettingsModeInfoBox = new InfoBox(0, 0, 1000, 800, 'center', color(255), 2, infoTexts['audioSettings'], 18);
     menuModeInfoBox = new InfoBox(0, 0, 1000, 800, 'center', color(255), 2, infoTexts['menu'], 18);
     taskSelectionModeInfoBox = new InfoBox(0, 0, 1000, 800, 'center', color(255), 2, infoTexts['taskSelection'], 18);

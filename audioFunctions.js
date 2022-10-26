@@ -1,6 +1,19 @@
 let audioCtx, listener;
 let listenerPosition = [0, 0];
-let themesong;
+let testsound, themesong;
+
+function startTestSound(type)
+{
+    let gainNode = audioCtx.createGain();
+    gainNode.gain.value = .4;
+    testsound = getAudioData('./assets/testsounds/test_' + type + '.wav', gainNode);
+    testsound.start();
+}
+
+function stopTestSound()
+{
+    testsound.stop();
+}
 
 function startThemeSong()
 {
@@ -18,7 +31,7 @@ function stopThemeSong()
 function initAudio()
 {
     audioCtx = new (window.AudioContext || window.webkitAudioContext)();
-    startThemeSong();
+    // startThemeSong();
 }
 
 function initBinauralAudio()
@@ -31,7 +44,7 @@ function initBinauralAudio()
     for (let i = 0; i < soundObjectSet.soundObjects.length; i++) {
         soundObjectSet.soundObjects[i].createAudioNodes();
     }
-    startThemeSong();
+    // startThemeSong();
 }
 
 function initMultichannelAudio()
@@ -45,7 +58,7 @@ function initMultichannelAudio()
     for (let i = 0; i < soundObjectSet.soundObjects.length; i++) {
         soundObjectSet.soundObjects[i].createAudioNodes(multichannel=true);
     }
-    startThemeSong();
+    // startThemeSong();
 }
   
 function getAudioData(filePath, gainNode)

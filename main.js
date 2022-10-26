@@ -2,6 +2,9 @@ const CONFIG = {
     'posRelHud': [0.5, 0.56]
 }
 
+let N_HTEST_ROUND = 1;
+let N_HTEST_MAX_ROUNDS = 2;
+let HTEST_TASK = false;
 let N_ROUND = 1;
 let MAX_ROUNDS = 3;
 let GAME_TYPE = false;
@@ -48,6 +51,9 @@ function draw()
             break;
         case 'audioSettings':
             audioSettingsMode();
+            break;
+        case 'hearingTest':
+            hearingTestMode();
             break;
         case 'menu':
             displayGameInfos();

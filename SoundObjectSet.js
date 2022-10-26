@@ -114,6 +114,14 @@ class SoundObjectSet
         this.handleDragStack();
         switch (GAME_MODE) {
             case 'gameTypeSelection':
+            case 'hearingTest':
+                for (let i = 0; i < this.soundObjects.length; i++) {
+                    this.soundObjects[i].over();
+                    this.soundObjects[i].drift();
+                    this.soundObjects[i].edges();
+                    this.soundObjects[i].show();
+                }
+                break;
             case 'audioSettings':
             case 'menu':
             case 'taskSelection':

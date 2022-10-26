@@ -1,13 +1,13 @@
 class ErrorMessage
 {
-    constructor(x, y, text)
+    constructor(x, y, text, col)
     {
         this.xInit = x;
         this.yInit = y;
         this.x = width/2 + x;
         this.y = height/2 + y;
         this.text = text;
-        this.col = color(255, 0, 0);
+        this.col = col;
         this.alpha = 0;
     }
     flash()
@@ -38,8 +38,10 @@ class ErrorMessage
     }
 }
 
-let multichannelError;
+let multichannelError, hearingTestCorrect, hearingTestFalse;
 function createErrorMessages()
 {
-    multichannelError = new ErrorMessage(0, 140, 'Not enough channels!');
+    multichannelError = new ErrorMessage(0, 140, 'Not enough channels!', color(255, 0, 0));
+    hearingTestCorrect = new ErrorMessage(0, 140, 'Correct!', color(0, 255, 0));
+    hearingTestFalse = new ErrorMessage(0, 140, 'Wrong!', color(255, 0, 0));
 }
