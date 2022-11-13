@@ -21,6 +21,25 @@ function getRandomHpiColor(randomRange, alpha)
     return color(col)
 }
 
+function getHpiColor(idx) {
+    let c;
+    switch (idx) {
+        case 0:
+            c = color([0, 122, 158]);
+            break;
+        case 1:
+            c = color([177, 6, 58]);
+            break;
+        case 2:
+            c = color([221, 97, 8]);
+            break;
+        case 3:
+            c = color([246, 168, 0]);
+            break;
+    }
+    return c;
+}
+
 function displayFramerate()
 {
     textAlign(LEFT);

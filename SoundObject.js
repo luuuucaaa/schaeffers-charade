@@ -1,6 +1,6 @@
 class SoundObject
 {
-    constructor(x, y, w, id, filePath, icon)
+    constructor(x, y, w, id, filePath, icon, colorIdx)
     {
         this.id = id;
         this.filePath = filePath;
@@ -26,7 +26,7 @@ class SoundObject
         
         this.automations = createVector(random(-0.1, 0.1), random(-0.005, 0.005));
 
-        this.color = getRandomHpiColor(10, 255);
+        this.color = getHpiColor(colorIdx);
         this.colorBuffer = this.color;
         this.alpha = 20;
 

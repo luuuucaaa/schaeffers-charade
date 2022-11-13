@@ -23,7 +23,7 @@ class SoundObjectSet
                 let yRel = 0.05 * height;
                 let x = -(xRel + xRel/4)/2 - this.nCols/2 * xRel + c * (xRel + xRel/4) - xRel/4;
                 let y = -(yRel + yRel/4)/2 - this.nRows/2 * yRel + r * (yRel + yRel/4) + 3.18 * height/8;
-                let soundObject = new SoundObject(x, y, this.w, SOUNDOBJECT_ID, filePathsSoundset[SOUNDOBJECT_ID], icons[SOUNDOBJECT_ID]);
+                let soundObject = new SoundObject(x, y, this.w, SOUNDOBJECT_ID, filePathsSoundset[SOUNDOBJECT_ID], icons[SOUNDOBJECT_ID], colorIdx[SOUNDOBJECT_ID]);
                 this.soundObjects.push(soundObject);
                 SOUNDOBJECT_ID++;
             }
