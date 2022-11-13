@@ -135,9 +135,9 @@ function createButtons()
     
     // visible in taskSelection mode
     let randomTasks = getRandomTasks();
-    task1Button = new Button(0, -120, 600, 80, 'center', color(180, 90, 110), 3, randomTasks[0], 22, taskButtonPressed);
-    task2Button = new Button(0, 0, 600, 80, 'center', color(180, 90, 110), 3, randomTasks[1], 22, taskButtonPressed);
-    task3Button = new Button(0, 120, 600, 80, 'center', color(180, 90, 110), 3, randomTasks[2], 22, taskButtonPressed);
+    task1Button = new Button(0, -120, 1200, 80, 'center', color(180, 90, 110), 3, randomTasks[0], 22, taskButtonPressed);
+    task2Button = new Button(0, 0, 1200, 80, 'center', color(180, 90, 110), 3, randomTasks[1], 22, taskButtonPressed);
+    task3Button = new Button(0, 120, 1200, 80, 'center', color(180, 90, 110), 3, randomTasks[2], 22, taskButtonPressed);
     backFromTaskSelectionButton = new Button(80, -20, 100, 40, 'lower_left', color(255), 2, 'Back', 18, backFromTaskSelectionButtonPressed);
     
     // visible in game mode
