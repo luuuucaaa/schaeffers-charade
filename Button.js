@@ -375,6 +375,15 @@ function startButtonPressed()
 function changeTaskButtonPressed()
 {
     let randomTasks = getRandomTasks();
+    task1Button.text = 'A';
+    task2Button.text = 'B';
+    task3Button.text = 'C';
+    GAME_MODE = 'taskSelection';
+}
+
+function changeTaskButtonPressed_old()
+{
+    let randomTasks = getRandomTasks();
     task1Button.text = randomTasks[0];
     task2Button.text = randomTasks[1];
     task3Button.text = randomTasks[2];
@@ -453,8 +462,9 @@ function backFromGameButtonPressed()
     startThemeSong();
 }
 
-function yesSubmitButtonPressed()
+function yesSubmitButtonPressed_old()
 {
+    soundObjectSet.log_soundobject_ids();
     for (let i = 0; i < timeout.length; i++) {
         clearTimeout(timeout[i]);
     }
@@ -467,6 +477,32 @@ function yesSubmitButtonPressed()
     task1Button.text = randomTasks[0];
     task2Button.text = randomTasks[1];
     task3Button.text = randomTasks[2];
+    N_ROUND++;
+    if (N_ROUND > MAX_ROUNDS) {
+        GAME_MODE = 'gameOver';
+        N_ROUND = 1;
+    } else {
+        GAME_MODE = 'taskSelection';
+    }
+    startThemeSong();
+    soundObjectSet.deleteDuplicates();
+}
+
+function yesSubmitButtonPressed()
+{
+    soundObjectSet.log_soundobject_ids();
+    for (let i = 0; i < timeout.length; i++) {
+        clearTimeout(timeout[i]);
+    }
+    for (let i = 0; i < soundObjectSet.soundObjects.length; i++) {
+        soundObjectSet.soundObjects[i].stopAudio();
+    }
+    SUBMITTING = false;
+    TASK = false;
+    let randomTasks = getRandomTasks();
+    task1Button.text = 'A';
+    task2Button.text = 'B';
+    task3Button.text = 'C';
     N_ROUND++;
     if (N_ROUND > MAX_ROUNDS) {
         GAME_MODE = 'gameOver';

@@ -3,6 +3,7 @@ class SoundObject
     constructor(x, y, w, id, filePath, icon, colorIdx)
     {
         this.id = id;
+        this.copy_id = id;
         this.filePath = filePath;
         this.icon = icon;
 
@@ -254,6 +255,8 @@ class SoundObject
                     that.filePath,
                     that.icon
                 );
+                soundObjectDuplicate.copy_id = that.copy_id;
+                console.log(that.copy_id);
                 SOUNDOBJECT_ID++;
                 soundObjectDuplicate.resetPosition();
                 soundObjectDuplicate.color = that.color;

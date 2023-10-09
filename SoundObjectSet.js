@@ -109,6 +109,30 @@ class SoundObjectSet
         }
 
     }
+    log_soundobject_ids()
+    {
+        let info_arr = [[], [], [], [], [], []];
+        for (let i = 0; i < this.soundObjects.length; i++)
+        {
+            
+            for (let j = 0; j < this.soundObjects[i].inScene.length; j++)
+            {
+                if (this.soundObjects[i].inScene[j])
+                {
+                    info_arr[j].push(this.soundObjects[i].copy_id);
+                }
+            }
+            
+        }
+        console.log(
+            "Scene A: " + info_arr[0] +
+            " | Scene B: " + info_arr[1] +
+            " | Scene C: " + info_arr[2] +
+            " | Scene D: " + info_arr[3] +
+            " | Scene E: " + info_arr[4] +
+            " | Scene F: " + info_arr[5]
+        );
+    }
     run()
     {
         this.handleDragStack();
